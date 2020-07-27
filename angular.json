@@ -124,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "todo-ngrx-entity"
+    }
+  },
+  "defaultProject": "todo-ngrx-entity",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
