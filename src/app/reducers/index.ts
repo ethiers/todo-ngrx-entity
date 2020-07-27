@@ -1,6 +1,6 @@
-import {ActionReducerMap} from "@ngrx/store";
-import { todoReducer } from "./../todo.reducer";
-//import {Todo} from './../models/model';
+import {ActionReducerMap} from '@ngrx/store';
+import { todoReducer } from './../todo.reducer';
+// import {Todo} from './../models/model';
 
 interface AppState {
   appReducer: any;
@@ -8,5 +8,5 @@ interface AppState {
 
 export const reducers: ActionReducerMap<AppState> = {
   appReducer: todoReducer
-}
+};
 

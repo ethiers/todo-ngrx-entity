@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import {Todo} from "../models/model";
+import {Todo} from '../models/model';
 
 export enum TodoActionTypes {
   ADD_TODO  = 'ADD_TODO',
