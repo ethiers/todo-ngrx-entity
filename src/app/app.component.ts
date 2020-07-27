@@ -1,15 +1,16 @@
 import {Component, OnInit} from '@angular/core';
-import {Store} from "@ngrx/store";
-import {Todo} from "./models/model";
-import {UUID} from 'angular2-uuid'
-import {AddTodo, DeleteTodo, ToggleDone, UpdateTodo} from "./actions/todo.actions";
+import {Store} from '@ngrx/store';
+import {Todo} from './models/model';
+import {UUID} from 'angular2-uuid';
+import {AddTodo, DeleteTodo, ToggleDone, UpdateTodo} from './actions/todo.actions';
+import {selectAllTodos} from './reducers';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'todo-ngrx-entity';
 
   public todos$: any;
@@ -25,23 +26,23 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.todos$ = this.store.select('appReducer');
+    this.todos$ = this.store.select(selectAllTodos);
   }
 
-  addTodo(value){
+  addTodo(value) {
     const todo: Todo = {
       value,
       done: false,
       id: this.generateUUID()
-    }
-    this.store.dispatch(new AddTodo({ todo }));
+    };
+    this.store.dispatch(new AddTodo({todo}));
   }
 
   deleteTodo(id) {
     this.store.dispatch(new DeleteTodo({id}));
   }
 
-  updateTodo(updatedTodo){
+  updateTodo(updatedTodo) {
     this.store.dispatch(new UpdateTodo({
       id: this.idToEdit,
       newValue: updatedTodo
@@ -66,5 +67,4 @@ export class AppComponent implements OnInit{
     this.todo = '';
     this.idToEdit = null;
   }
-
 }

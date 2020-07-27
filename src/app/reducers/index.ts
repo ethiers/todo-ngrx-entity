@@ -1,12 +1,10 @@
-import {ActionReducerMap} from '@ngrx/store';
-import { todoReducer } from './../todo.reducer';
-// import {Todo} from './../models/model';
+import {ActionReducerMap, createFeatureSelector} from '@ngrx/store';
+import * as fromTodo from './../todo.reducer';
 
-interface AppState {
-  appReducer: any;
-}
-
-export const reducers: ActionReducerMap<AppState> = {
-  appReducer: todoReducer
+export const reducers: ActionReducerMap<any> = {
+  todo: fromTodo.todoReducer
 };
 
+export const selectTodoState = createFeatureSelector<fromTodo.State>('todo');
+
+export const { selectAll: selectAllTodos } = fromTodo.todoAdapter.getSelectors(selectTodoState);
